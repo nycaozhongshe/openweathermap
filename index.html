@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta content="email=no" name="format-detection" />
+		<meta content="telephone=no" name="format-detection" />
+		<title>Document</title>
+		<meta name="keywords" content="HTML, CSS">
+		<meta name="description" content="自己填">
+		<meta name="author" content="caozhongshe">
+		<link rel="stylesheet" href="css/cormalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/type.css" />
+	</head>
+
+	<body>
+		<div class="site-wrapper" id="wrap">
+			<div class="site-header" id="example-2">
+				<input type="text" name="" id="search" value="" class="search" / v-on:keyup.enter="submit">
+				<input type="button" name="" id="btn" value="? search" class="btn" v-on:click="submit" />
+			</div>
+			<hr />
+			<div class="site-main">
+				<div class="content clearfix">
+					<div class="mian-tittle">
+						<h2>Current weather and forecasts in your city</h2>
+					</div>
+					<div class="site-bar">
+						<h3>
+							weather in <tow v-bind:noc ='name' v-bind:country ='country'></tow> <nyto  v-bind:temp='temp' v-bind:icon='icon'></nyto>
+						</h3>
+						<p>{{description}}</p>
+						<p>{{time}} <span class="red">Wrong data?</span></p>
+						<table border="1">
+							<tr is='wind' :speed='speed' :deg='deg'></tr>
+							<tr>
+								<td>Cloudiness</td>
+								<td>{{description}}</td>
+							</tr>
+							<tr>
+								<td>Pressure</td>
+								<td>{{pressure}}</td>
+							</tr>
+							<tr>
+								<td>Humidity</td>
+								<td> {{humidity}}</td>
+							</tr>
+							<tr>
+								<td>Sunrise</td>
+								<td>{{sunrise}}</td>
+							</tr>
+							<tr>
+								<td>Sunset</td>
+								<td>{{sunset}}</td>
+							</tr>
+							<tr>
+								<td>Geo coords</td>
+								<td> [ {{lat}}, {{lon}}]</td>
+							</tr>
+						</table>
+					</div>
+					<div class="right-content">
+						<h3>Weather and forecasts in   <tow v-bind:noc ='name' v-bind:country ='country'></tow></h3>
+						<ul class="list clearfix">
+							<li style="border-bottom:1px solid red;">Main</li>
+							<li>Daily</li>
+							<li>Hourly</li>
+							<li>Chart</li>
+							<li>Map</li>
+						</ul>
+						<ul class="fiveday">
+							<li style=" display: block" class="one">
+								<h4>13天天气预报</h4>
+								<div class="model-wrap">
+									<div class="model clearfix" v-for='list in lists'>
+										<div class="model-left">
+											<span>{{list.time}}</span>
+											<img v-bind:src='list.icon' /><br />
+											<span class="today">{{list.today}}</span>
+										</div>
+										<ul class="model-right">
+											<li>
+												<span class="day">{{list.day}}</span>
+												<span class="min">{{list.min}}</span> {{list.description}}
+											</li>
+											<li>{{list.speed}}</li>
+											<li>clouds: {{list.clouds}}, {{list.pressure}}</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li>2</li>
+							<li class="hourly">
+								<h4>Hourly weather and forecasts in <tow v-bind:noc ='name' v-bind:country ='country'></tow></h4>
+								<div class="dayweather-wrap" id='wrap'>
+									<table class="dayweather" v-for='listh in listHour'>
+										<tr>
+											<th>{{listh.date}}
+												<span v-if='listh.isToday'>todays</span></th>
+											<th></th>
+										</tr>
+										<tr v-for='item in listh.tempweather'>
+											<td>
+												{{item.time}}<img v-bind:src='item.icon' />
+											</td>
+											<td>
+												<span class="day-temp">{{item.temp}} </span>{{item.description}} <br />
+						                        {{item.min}} {{item.max}} °C{{item.speed}} m/s.{{item.clouds}}, {{item.pressure}} hpa
+											</td>
+										</tr>
+									</table>
+								</div>
+							</li>
+							<li>4</li>
+							<li>5</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="site-footer"></div>
+		</div>
+		<script src="https://cdn.bootcss.com/vue/2.3.0/vue.js"></script>
+		<script type="text/javascript" src='js/jquery.js'></script>
+		<script src="https://cdn.bootcss.com/axios/0.16.1/axios.js"></script>
+		<script type="text/javascript" src='js/fllie.js'></script>
+
+	</body>
+
+</html>
